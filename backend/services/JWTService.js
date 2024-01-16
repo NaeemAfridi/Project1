@@ -18,7 +18,7 @@ class JWTService {
   }
 
   //verify access token
-  static verifyAccesToken(token) {
+  static verifyAccessToken(token) {
     return jwt.verify(token, ACCESS_TOKEN_SECRET);
   }
 

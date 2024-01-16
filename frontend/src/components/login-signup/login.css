@@ -1,0 +1,138 @@
+.login-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 70px);
+}
+
+.form-container {
+  width: 350px;
+  border-radius: 20px;
+  background: #f8bd00;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-sizing: border-box;
+  padding: 20px 30px;
+}
+
+.title {
+  text-align: center;
+  margin: 10px 0 30px 0;
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: 15px;
+}
+
+.input {
+  border-radius: 10px;
+  border: 1px solid #c0c0c0;
+  outline: 0;
+  box-sizing: border-box;
+  padding: 12px 15px;
+}
+
+.page-link {
+  text-decoration: none;
+  margin: 0;
+  margin-top: -10px;
+  text-align: end;
+  color: var(--black-color);
+}
+
+.page-link-label {
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.page-link-label:hover {
+  color: #333;
+}
+
+.sign-up-link {
+  margin-left: 1px;
+  font-size: 16px;
+  text-decoration: none;
+  color: #514ed0;
+  cursor: pointer;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.sign-up-label {
+  text-align: center;
+  margin: 0;
+  font-size: 14px;
+  color: var(--black-color);
+}
+
+.form-btn {
+  padding: 15px;
+  border-radius: 10px;
+  border: 0;
+  outline: 0;
+  background: black;
+  color: #f8bd00;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.form-btn:active {
+  box-shadow: none;
+}
+
+.contineu {
+  text-align: center;
+}
+
+.buttons-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 0px;
+  gap: 15px;
+}
+
+.apple-login-button,
+.google-login-button {
+  box-sizing: border-box;
+  padding: 10px 15px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  gap: 2px;
+  border: 0;
+}
+
+.apple-icon,
+.google-icon {
+  font-size: 35px;
+  margin-bottom: 1px;
+}
+
+.agreement {
+  margin-top: 10px;
+  font-size: 12px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.agreement p {
+  width: 220px;
+}
+.agreement-link {
+  text-decoration: none;
+}

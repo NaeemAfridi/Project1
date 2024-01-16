@@ -1,0 +1,36 @@
+a {
+  text-decoration: none;
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: antiquewhite;
+}
+
+.logo a {
+  color: rgb(125, 2, 2);
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.navbar ul {
+  display: flex;
+  gap: 20px;
+}
+
+.navbar ul li {
+  list-style-type: none;
+}
+
+.navbar ul li a {
+  color: black;
+  font-size: 16px;
+  transition: all 0.5sec;
+  font-weight: bold;
+}
+
+.navbar ul li a:hover {
+  color: rgb(125, 2, 2);
+}

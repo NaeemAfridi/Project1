@@ -29,11 +29,11 @@ const authController = {
 
     //3.1 check if email is not registered
     try {
-      const eamilInUse = await User.exists({ email });
+      const emailInUse = await User.exists({ email });
 
       const usernameInUse = await User.exists({ username });
 
-      if (eamilInUse) {
+      if (emailInUse) {
         const error = {
           status: 409,
           message: "Email already registered! use another email",
@@ -69,16 +69,12 @@ const authController = {
       user = await userToRegistered.save();
 
       //token generation
-      accessToken = JWTService.signAccessToken(
-        { _id: user._id, username: user.username },
-        "30m"
-      );
+      accessToken = JWTService.signAccessToken({ _id: user._id }, "30m");
 
-      refreshToken = JWTService.signRefreshToken(
-        { _id: user._id, username: user.username },
-        "60m"
-      );
-    } catch (error) {}
+      refreshToken = JWTService.signRefreshToken({ _id: user._id }, "60m");
+    } catch (error) {
+      console.log(error);
+    }
 
     //store refresh token in db
     await JWTService.storeRefreshToken(refreshToken, user._id);
@@ -96,8 +92,8 @@ const authController = {
 
     //converting user object to dto
     const userDTO = new UserDTO(user);
-    //6.response send
-    return res.status(201).json({ user: userDTO });
+    //6. send response
+    return res.status(201).json({ user: userDTO, auth: true });
   },
 
   //login controller
@@ -147,7 +143,7 @@ const authController = {
       return next(error);
     }
 
-    //
+    //token generation
     const accessToken = JWTService.signAccessToken({ _id: user._id }, "30m");
     const refreshToken = JWTService.signRefreshToken({ _id: user._id }, "60m");
 
@@ -179,7 +175,26 @@ const authController = {
     const userDTO = new UserDTO(user);
 
     //4.return response
-    return res.status(200).json({ user: userDTO });
+    return res.status(200).json({ user: userDTO, auth: true });
+  },
+
+  //logout controller
+  async logout(req, res, next) {
+    //1.delete refresh token form db
+    const { refreshToken } = req.cookies;
+
+    try {
+      await RefreshToken.deleteOne({ token: refreshToken });
+    } catch (error) {
+      return next(error);
+    }
+
+    //2.delete cookies
+    res.clearCookie("accessToken");
+    res.clearCookie("refreshToken");
+
+    //3.send response
+    res.status(200).json({ user: null, auth: false });
   },
 };
 
